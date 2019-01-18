@@ -44,7 +44,7 @@ LOCK TABLES `configs` WRITE;
 
 INSERT INTO `configs` (`id`, `us`, `pw`, `usuario`, `cliente`, `url`, `cookie`, `token`, `proxy`, `status`)
 VALUES
-	(1,'cobraja','850060','1521','1367','http://app.linceconsultadedados.com.br/',NULL,NULL,'187.86.254.1:3128',1);
+	(1,'cobraja','2525xpe','1521','1367','http://app.linceconsultadedados.com.br/', '', '','187.86.254.1:3128',1, NULL,NULL);
 
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;
