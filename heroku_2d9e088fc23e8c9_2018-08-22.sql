@@ -42,9 +42,9 @@ CREATE TABLE `configs` (
 LOCK TABLES `configs` WRITE;
 /*!40000 ALTER TABLE `configs` DISABLE KEYS */;
 
-INSERT INTO `configs` (`id`, `us`, `pw`, `usuario`, `cliente`, `url`, `cookie`, `token`, `proxy`, `status`)
+INSERT INTO `configs` (`us`, `pw`, `usuario`, `cliente`, `url`, `cookie`, `token`, `proxy`, `status`, `created_at`, `updated_at`)
 VALUES
-	(1,'cobraja','2525xpe','1521','1367','http://app.linceconsultadedados.com.br/', '', '','187.86.254.1:3128',1, NULL,NULL);
+	('cobraja','2525xpe','1521','1367','http://app.linceconsultadedados.com.br/', '', '','187.86.254.1:3128',1, NULL,NULL, NULL, NULL);
 
 /*!40000 ALTER TABLE `configs` ENABLE KEYS */;
 UNLOCK TABLES;

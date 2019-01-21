@@ -11,8 +11,8 @@ class EmailsTableSeeder extends Seeder
      */
     public function run()
     {
-		\DB::table('emails')->truncate();
+		\DB::table('email')->truncate();
 		
-		factory(App\Emails::class, 30)->create();
+		factory(App\Email::class, 30)->create();
     }
 }

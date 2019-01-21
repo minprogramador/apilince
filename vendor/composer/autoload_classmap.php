@@ -37,6 +37,7 @@ return array(
     'Carbon\\Exceptions\\InvalidDateException' => $vendorDir . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
     'Carbon\\Laravel\\ServiceProvider' => $vendorDir . '/nesbot/carbon/src/Carbon/Laravel/ServiceProvider.php',
     'Carbon\\Translator' => $vendorDir . '/nesbot/carbon/src/Carbon/Translator.php',
+    'CreateConfigTable' => $baseDir . '/database/migrations/2018_08_21_184530_create_config_table.php',
     'CreateDocTable' => $baseDir . '/database/migrations/2018_08_21_184530_create_doc_table.php',
     'CreateEmailsTable' => $baseDir . '/database/migrations/2018_08_21_184423_create_emails_table.php',
     'CreateEnderecoTable' => $baseDir . '/database/migrations/2018_08_21_184502_create_endereco_table.php',
