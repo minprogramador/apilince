@@ -23,11 +23,10 @@ class CreateConfigTable extends Migration
             $table->string('cookie');
             $table->string('token');
             $table->string('proxy');
-            $table->string('status');
+            $table->integer('status');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *
