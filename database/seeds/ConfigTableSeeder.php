@@ -13,6 +13,7 @@ class ConfigTableSeeder extends Seeder
     {
 
 		DB::table('configs')->insert([
+			'id' => 1,
             'us' => 'cobraja',
             'pw' => '2525xpe',
             'usuario' => '1521',

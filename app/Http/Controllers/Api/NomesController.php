@@ -55,7 +55,7 @@ class NomesController extends Controller
 
 			$dados = $lince->consultaNome($nome, $cidade, $uf, $cep);
 		}
-				
+
 		if(count($dados) > 0)
 		{
 			$dados_novos = array();
@@ -287,7 +287,7 @@ class NomesController extends Controller
 		return array('nomes' => $resultado, 'total' => $nomesTotal, 'pagina'=> $pagina);
 	}
 	
-	public function pesquisa(Request $request){
+	public function pesquisa(Request $request) {
 		$nome   = $request->get('nome');
 		$cidade = $request->get('cidade');
 		$uf     = $request->get('uf');
@@ -320,6 +320,7 @@ class NomesController extends Controller
 			return $nomes;
 		}else{
 			$novos = $this->pesquisaExterno($nome, $cidade, $uf, $cep);
+
 			$nomes = $this->pesquisaInterna($nome, $cidade, $uf, $cep, $pagina);
 			$total = $nomes['total'];
 			if($total > 50)
