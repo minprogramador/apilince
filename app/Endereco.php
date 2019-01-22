@@ -16,7 +16,7 @@ class Endereco extends Model
      * @var array
      */
     protected $fillable = [
-        'doc', 'logradouro', 'numero', 'complemento', 'cep', 'cidade', 'uf'
+        'doc','nome', 'logradouro', 'numero', 'complemento', 'cep', 'cidade', 'uf'
     ];
 
     /**
@@ -25,6 +25,6 @@ class Endereco extends Model
      * @var array
      */
     protected $hidden = [
-        'id', 'logradouro', 'numero', 'complemento', 'cep', 'cidade', 'uf', 'created_at', 'updated_at'
+        'created_at', 'updated_at'
     ];
 }

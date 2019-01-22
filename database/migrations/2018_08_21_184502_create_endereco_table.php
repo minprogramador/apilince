@@ -16,6 +16,7 @@ class CreateEnderecoTable extends Migration
         Schema::create('enderecos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('doc')->index();
+            $table->string('nome')->index();
             $table->string('logradouro')->index();
             $table->string('numero');
             $table->string('complemento');            
@@ -33,6 +34,6 @@ class CreateEnderecoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('endereco');
+        Schema::dropIfExists('enderecos');
     }
 }

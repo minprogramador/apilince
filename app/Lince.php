@@ -252,8 +252,11 @@ public function limpadocexten($doc)
 				"Authorization: Bearer ".$data['access_token']
 			);
 
-			$res  = $this->curl($url, $cookie, $post, true, $ref, $rer);
-		
+			$res  = $this->curl($url, $cookie, $post, true, $ref, $rer) . '####end###';
+			if(stristr($res, '[{')){
+				$res = '[{'.$this->corta($res, '[{', '####end###');
+			}
+
 			if(stristr($res, 'cpf_cnpj":'))
 			{
 				$cooki  = $this->getCookies($res);
@@ -295,7 +298,11 @@ public function limpadocexten($doc)
 		$ref  = $dados['url'];
 		$post = 'cliente='.$dados['cliente'].'&email=' .$email . '&usuario=' . $dados['usuario'];
 
-		$res  = $this->curl($url, $dados['cookie'], $post, false, $ref, $rer);
+		$res  = $this->curl($url, $dados['cookie'], $post, false, $ref, $rer) . '####end###';
+		if(stristr($res, '[{')){
+			$res = '[{'.$this->corta($res, '[{', '####end###');
+		}
+
 		$res  = json_decode($res, true);
 		return $res;
 	}
@@ -342,8 +349,14 @@ public function limpadocexten($doc)
 		}
 	
 		$post .= 'cliente='. $dados['cliente']. '&usuario=' . $dados['usuario'];
-		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, false, $ref, $rer);
+		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, false, $ref, $rer) . '####end###';
+		if(stristr($res, '[{')){
+			$res = '[{'.$this->corta($res, '[{', '####end###');
+		}
+
+
 		$res  = json_decode($res, true);
+
 		return $res;
 	}
 	/*
@@ -396,9 +409,17 @@ public function limpadocexten($doc)
 		}
 	
 		$post .= 'cliente= '. $dados['cliente'] .'&usuario=' . $dados['usuario'];
-		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, false, $ref, $rer);
-		$res  = json_decode($res, true);
-		return $res;
+		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, true, $ref, $rer) . '####end###';
+
+		if(stristr($res, '[{')){
+			$res = '[{'.$this->corta($res, '[{', '####end###');
+			$res  = json_decode($res, true);
+			return $res;
+
+		}else{
+			return [];
+		}
+
 	}
 	/*
 
@@ -420,7 +441,11 @@ public function limpadocexten($doc)
 		$ref  = $dados['url'];
 		$post = 'cpf_cnpj=' .$doc;
 
-		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, false, $ref, $rer);
+		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, false, $ref, $rer) . '####end###';
+		if(stristr($res, '[{')){
+			$res = '[{'.$this->corta($res, '[{', '####end###');
+		}
+
 		$res  = json_decode($res, true);
 		return $res;
 	}
@@ -452,7 +477,7 @@ public function limpadocexten($doc)
 		$url  = $dados['url'] . 'consulta/consultaTelefone';
 		$ref  = $dados['url'];
 		$post = 'cliente='.$dados['cliente'].'&numero='.$tel.'&usuario=' . $dados['usuario'];
-		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, true, $ref, $rer);
+		$res  = $this->curl($url, base64_decode($dados['cookie']), $post, true, $ref, $rer) . '####end###';
 
 		if(stristr($res, '500 Internal Server Error')){
 			return 'relog';
@@ -461,12 +486,8 @@ public function limpadocexten($doc)
 		}elseif(strlen($res) < 20){
 			return false;
 		}
-		if(stristr($res, '","')){
-			$resm = $this->corta($res, 'HTTP/', 'Connection: close');
-			$res = str_replace($resm, '', $res);
-			$res = str_replace('HTTP/Connection: close', '', $res);
-			$res = str_replace("\r\n", '', $res);
-
+		if(stristr($res, '[{')){
+			$res = '[{'.$this->corta($res, '[{', '####end###');
 			$res  = json_decode($res, true);
 			return $res;
 		}

@@ -57,7 +57,7 @@ class EnderecosController extends Controller
 			$lince->getCredencial();
 			$dados = $lince->consultaEnd($logradouro, $cidade, $uf, $cep);
 		}
-		
+
 		if(count($dados) > 1)
 		{
 			$dados_novos = array();
@@ -76,7 +76,7 @@ class EnderecosController extends Controller
 				{
 					array_push($dados_novos, array(
        		 	    	'doc' => $ndoc,
-	          			'nome' => $nnome,
+       		 	    	'nome' => $nnome,
        		 	    	'logradouro' => $logradouro,
        		 	    	'numero' => $numero,
        		 	    	'complemento' => $complemento,
@@ -87,7 +87,6 @@ class EnderecosController extends Controller
         			
 				}
 			}
-
 			Endereco::insert($dados_novos);
 			return true;
 		}
@@ -373,8 +372,11 @@ class EnderecosController extends Controller
 		}
 		else
 		{
+
 			$novos = $this->pesquisaExterno($logradouro, $numero, $complemento, $cidade, $uf, $cep);
 			$nomes = $this->pesquisaInterna($logradouro, $numero, $complemento, $cidade, $uf, $cep, $pagina);
+
+
 			$total = $nomes['total'];
 			if($total > 50)
 			{
